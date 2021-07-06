@@ -4,7 +4,7 @@
 using namespace std;
 int main()
 {
-  int loop = 0;
+  long long loop = 0;
   cin >> loop;
 
   int combination = 0;
