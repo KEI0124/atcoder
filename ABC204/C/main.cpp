@@ -4,23 +4,35 @@
 #include<algorithm>
 using namespace std;
 
+bool temp[2000];
+vector<vector<int>>G;
+
+void dfs(int v)
+{
+	if(temp[v])return;
+	temp[v]=true;
+	for(auto vv:G[v])dfs(vv);
+}
+
 int main() 
 {
 	int N,M;
 	cin >> N >> M;
-
-	for (int i = 0; i < N; i++)
+	G.resize(N);
+	for(int i=0;i < M; i++)
 	{
-		cin >> C[i];
+		int a,b;
+		cin >> a >> b;
+		G[a-1].push_back(b-1);
 	}
+	
+	int answer = 0;
 
-	sort(C.begin(),C.end());
-
-	long long answer = 1;
-
-	for(int i = 0; i < N; i++)
+	for(int i = 0; i < N;i++)
 	{
-		answer = answer * max(0, C[i] - i) % 1000000007;
+		for(int j=0;j<N;j++)temp[j]=false;
+		dfs(i);
+		for(int j=0;j<N;j++)if(temp[j])answer++;
 	}
 
 	cout << answer << endl;
