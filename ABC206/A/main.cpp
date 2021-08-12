@@ -4,25 +4,17 @@
 using namespace std;
 int main()
 {
-  const int listprice = 206;
-  int price = 0;
-  cin >> price;
+  long long A,B = 0;
+  cin >> A >> B;
 
-  string message = "Yay!";
+  float kcal;
+  float magnification;
 
-  price = price * 1.08;
+  magnification = B / 100.0;
 
-  if(price > listprice)
-  {
-    message = ":(";
-  }
-  
-  if(price == listprice)
-  {
-    message = "so-so";
-  }
+  kcal = A * magnification;
 
-  cout << message << endl;
+  cout << kcal << endl;
 
   return 0;
 }
